@@ -1,0 +1,17 @@
+version: "3"
+services:
+  app:
+    container_name: sanjeev_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4500:4500"
+    environment:
+      NODE_ENV: production
+    networks:
+      - sanjeev-network
+
+networks:
+  sanjeev-network:
+    driver: bridge
