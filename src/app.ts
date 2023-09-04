@@ -1,9 +1,12 @@
+import "reflect-metadata";
 import express, { Request, Response, Application } from "express";
 import { config } from "dotenv";
-import SampleRouter from "./routes/sample1.route"; // Update the import path
+import SampleRouter from "./routes/sample1.route";
 import { Routes } from "./interfaces/routes.interface";
 import allRoutes from "./allRoutes";
 import ResponseError from "./response/ResponseError";
+import { connectToDatabase } from "./database"; // Import the database connection function
+
 config({ path: ".env" });
 
 class App {
@@ -17,6 +20,15 @@ class App {
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
     this.listen();
+    this.connectToDatabase(); // Connect to the database during app initialization
+  }
+
+  private async connectToDatabase() {
+    try {
+      await connectToDatabase();
+    } catch (error) {
+      console.error("Error connecting to MongoDB:", error);
+    }
   }
 
   private initializeMiddlewares() {
@@ -28,6 +40,8 @@ class App {
     this.app.get("/", (req: Request, res: Response) => {
       res.send("Welcome to TypeScript afflikayshon!");
     });
+
+    // Pass the database connection to the route handlers or controllers
     routes.forEach((route) => {
       this.app.use("/sanjeevApi", route.router);
     });

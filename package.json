@@ -21,9 +21,15 @@
   "description": "",
   "devDependencies": {
     "@types/express": "^4.17.17",
+    "@types/mongoose": "^5.11.97",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
     "dotenv": "^16.3.1",
     "express": "^4.16.4",
+    "mongodb": "^6.0.0",
+    "mongoose": "^7.5.0",
     "nodemon": "^3.0.1",
+    "reflect-metadata": "^0.1.13",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
