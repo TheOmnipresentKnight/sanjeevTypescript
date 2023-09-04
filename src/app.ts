@@ -26,7 +26,7 @@ class App {
 
   private initializeRoutes(routes: Routes[]) {
     this.app.get("/", (req: Request, res: Response) => {
-      res.send("Hello, TypeScript Express!");
+      res.send("Welcome to TypeScript afflikayshon!");
     });
     routes.forEach((route) => {
       this.app.use("/sanjeevApi", route.router);
